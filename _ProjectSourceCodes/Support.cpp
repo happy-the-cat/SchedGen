@@ -83,24 +83,28 @@ void freeDynamicIntArray2D(int **arr, int n) {
 }
 
 // It dynamically creates a 1D array of string and returns a pointer to it.
-// Parameter:  n - size of 1D array
-char** createDynamicStrArray(int n) {
+// Parameter:
+//   x - size of 1D array
+//   y - number of characters of string
+char** createDynamicStrArray(int x, int y) {
     int i;
     char **arr;
-    arr = (char **) calloc(n, sizeof(char *));
-    for (i=0; i<n; i++) arr[i] = (char *) calloc(50, sizeof(char));
+    arr = (char **) calloc(x, sizeof(char *));
+    for (i=0; i<x; i++) arr[i] = (char *) calloc(y, sizeof(char));
     return arr;
 }
 
 // It dynamically creates a 2D array of string and returns a pointer to it.
+// Essenstially a 3D character array since string in C is a 1D char array.
 // Parameters:
-//   n - number of rows of 2D array
-//   m - number of columns of 2D array
-char*** createDynamicStrArray2D(int n, int m) {
+//   x - number of rows of 2D array
+//   y - number of columns of 2D array
+//   z - number of characters of string
+char*** createDynamicStrArray2D(int x, int y, int z) {
     int i;
     char ***arr;
-    arr = (char ***) calloc(n, sizeof(char **));
-    for (i=0; i<n; i++) arr[i] = createDynamicStrArray(m);
+    arr = (char ***) calloc(x, sizeof(char **));
+    for (i=0; i<x; i++) arr[i] = createDynamicStrArray(y, z);
     return arr;
 }
 
@@ -137,3 +141,4 @@ void padStr(int w, const char* s) {
 void padInt(int w, int x) {
 	printf("%-*d", w, x);  // - is use left justify the output; asterisk is for the width
 }
+
